@@ -14,6 +14,7 @@ import com.example.bustec.R;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class AdaptadorBuses extends RecyclerView.Adapter<AdaptadorBuses.ViewHolder>{
 
 private List<Buses> buses;

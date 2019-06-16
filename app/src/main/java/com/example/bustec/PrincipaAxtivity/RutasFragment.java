@@ -15,12 +15,6 @@ import com.example.bustec.R;
 public class RutasFragment extends Fragment {
     Spinner spinner;
     Ruta1  ruta1;
-    Ruta2  ruta2;
-    Ruta3  ruta3;
-    Ruta4  ruta4;
-    Ruta5  ruta5;
-    Ruta6  ruta6;
-    Ruta7  ruta7;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -75,16 +69,6 @@ public class RutasFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

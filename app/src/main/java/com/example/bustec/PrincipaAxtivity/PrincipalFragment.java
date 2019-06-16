@@ -3,20 +3,30 @@ package com.example.bustec.PrincipaAxtivity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.bustec.AdaptadoresApi.AdaptadorBuses;
+import com.example.bustec.Clases.Buses;
+import com.example.bustec.Interfaces.ApiServiceBus;
 import com.example.bustec.R;
+import com.example.bustec.Servidores.ApiServicioBusGenerador;
 
+import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class PrincipalFragment extends Fragment {
 
-//    private static final String TAG = MainActivity.class.getSimpleName();
-//    private RecyclerView busesList;
+    private static final String TAG = PrincipalFragment.class.getSimpleName();
+    private RecyclerView busesList;
 
 
     @Override
@@ -24,12 +34,13 @@ public class PrincipalFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_principal, container, false);
-//
-//        busesList.setLayoutManager(new LinearLayoutManager(getContext()));
-//        initialize();
+        busesList = view.findViewById(R.id.list_bus);
+        busesList.setLayoutManager(new LinearLayoutManager(getContext()));
+        busesList.setAdapter(new AdaptadorBuses());
+        initialize();
         return view;
     }
-/*
+
 
     private void initialize() {
         ApiServiceBus service = ApiServicioBusGenerador.createService(ApiServiceBus.class);
@@ -38,11 +49,11 @@ public class PrincipalFragment extends Fragment {
 
         call.enqueue(new Callback<List<Buses>>() {
             @Override
-            public void onResponse(Call<List<Buses>> call, Response<List<Buses>> response) {
+            public void onResponse(Call<List<Buses>> call1 , Response<List<Buses>> response) {
                 try {
 
-                    int statusCode = response.code();
-                    Log.d(TAG, "HTTP status code: " + statusCode);
+                    int code = response.code();
+                    Log.d(TAG, "HTTP status code: " + code);
 
                     if (response.isSuccessful()) {
 
@@ -74,6 +85,6 @@ public class PrincipalFragment extends Fragment {
 
         });
     }
-*/
+
 
 }

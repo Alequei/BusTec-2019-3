@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentContainer;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -21,12 +20,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.bustec.Fragmets.Ruta1;
-import com.example.bustec.Fragmets.Ruta2;
-import com.example.bustec.Fragmets.Ruta3;
-import com.example.bustec.Fragmets.Ruta4;
-import com.example.bustec.Fragmets.Ruta5;
-import com.example.bustec.Fragmets.Ruta6;
-import com.example.bustec.Fragmets.Ruta7;
 import com.example.bustec.Logeo.Login;
 import com.example.bustec.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -106,37 +99,107 @@ public class Principal extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Ruta1 ruta1=new Ruta1();
-            FragmentManager manager=getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.mainlayout ,ruta1).commit();
+            getSupportActionBar().setTitle("Principal");
+            getSupportFragmentManager().beginTransaction().replace(R.id.mainlayout,new PrincipalFragment()).commit();
+
             // Manejar la acción de la cámara.
         } else if (id == R.id.ruta1) {
             getSupportActionBar().setTitle("Rutas");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,new Ruta1()).commit();
+            Ruta1 ruta = new Ruta1();
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", 1);
+            bundle.putDouble("latitud-origen", -12.043970);
+            bundle.putDouble("longitud-origen", -76.952846);
+            bundle.putString("title-origen", "Tecsup Santa Anita");
+            bundle.putDouble("latitud-destino", -12.056878);
+            bundle.putDouble("longitud-destino", -76.973848);
+            bundle.putString("title-destino", "Puente Santa Anita");
+            ruta.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.mainlayout,ruta).commit();
         }else if (id == R.id.ruta2) {
             getSupportActionBar().setTitle("Rutas");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,new Ruta2()).commit();
+            Ruta1 ruta = new Ruta1();
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", 2);
+            bundle.putDouble("latitud-origen", -12.043970);
+            bundle.putDouble("longitud-origen", -76.952846);
+            bundle.putString("title-origen", "Tecsup Santa Anita");
+            bundle.putDouble("latitud-destino", -12.043970);
+            bundle.putDouble("longitud-destino", -76.952846);
+            bundle.putString("title-destino", "Tecsup Santa Anita");
+            ruta.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.mainlayout, ruta).commit();
         }else if (id == R.id.ruta3) {
             getSupportActionBar().setTitle("Rutas");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,new Ruta3()).commit();
+            Ruta1 ruta = new Ruta1();
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", 3);
+            bundle.putDouble("latitud-origen", -12.043970);
+            bundle.putDouble("longitud-origen", -76.952846);
+            bundle.putString("title-origen", "Tecsup Santa Anita");
+            bundle.putDouble("latitud-destino", -12.043970);
+            bundle.putDouble("longitud-destino", -76.952846);
+            bundle.putString("title-destino", "Tecsup Santa Anita");
+            ruta.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.mainlayout,ruta ).commit();
         }else if (id == R.id.ruta4) {
             getSupportActionBar().setTitle("Rutas");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,new Ruta4()).commit();
+            Ruta1 ruta = new Ruta1();
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", 4);
+            bundle.putDouble("latitud-origen", -12.043970);
+            bundle.putDouble("longitud-origen", -76.952846);
+            bundle.putString("title-origen", "Tecsup Santa Anita");
+            bundle.putDouble("latitud-destino", -12.043970);
+            bundle.putDouble("longitud-destino", -76.952846);
+            bundle.putString("title-destino", "Tecsup Santa Anita");
+            ruta.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.mainlayout,ruta).commit();
         }else if (id == R.id.ruta5) {
             getSupportActionBar().setTitle("Rutas");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,new Ruta5()).commit();
+            Ruta1 ruta = new Ruta1();
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", 5);
+            bundle.putDouble("latitud-origen", -12.043970);
+            bundle.putDouble("longitud-origen", -76.952846);
+            bundle.putString("title-origen", "Tecsup Santa Anita");
+            bundle.putDouble("latitud-destino", -12.043970);
+            bundle.putDouble("longitud-destino", -76.952846);
+            bundle.putString("title-destino", "Tecsup Santa Anita");
+            ruta.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.mainlayout,ruta).commit();
         }else if (id == R.id.ruta6) {
             getSupportActionBar().setTitle("Rutas");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,new Ruta6()).commit();
+            Ruta1 ruta = new Ruta1();
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", 6);
+            bundle.putDouble("latitud-origen", -12.043970);
+            bundle.putDouble("longitud-origen", -76.952846);
+            bundle.putString("title-origen", "Tecsup Santa Anita");
+            bundle.putDouble("latitud-destino", -12.043970);
+            bundle.putDouble("longitud-destino", -76.952846);
+            bundle.putString("title-destino", "Tecsup Santa Anita");
+            ruta.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.mainlayout,ruta).commit();
         }else if (id == R.id.ruta7) {
             getSupportActionBar().setTitle("Rutas");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,new Ruta7()).commit();
+            Ruta1 ruta = new Ruta1();
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", 7);
+            bundle.putDouble("latitud-origen", -12.043970);
+            bundle.putDouble("longitud-origen", -76.952846);
+            bundle.putString("title-origen", "Tecsup Santa Anita");
+            bundle.putDouble("latitud-destino", -12.043970);
+            bundle.putDouble("longitud-destino", -76.952846);
+            bundle.putString("title-destino", "Tecsup Santa Anita");
+            ruta.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.mainlayout,ruta).commit();
         }
         else if (id == R.id.nav_horarios) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,new HorariosFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.mainlayout,new HorariosFragment()).commit();
         } else if (id == R.id.nav_perfil) {
             getSupportActionBar().setTitle("Perfil");
-                getSupportFragmentManager().beginTransaction().replace(R.id.container,new PerfilFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.mainlayout,new PerfilFragment()).commit();
         }else if (id == R.id.nav_end) {
             FirebaseAuth.getInstance().signOut();
             Intent loginactivity=new Intent(this, Login.class);
