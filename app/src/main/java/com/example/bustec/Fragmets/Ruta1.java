@@ -67,8 +67,7 @@ public class Ruta1 extends Fragment implements OnMapReadyCallback, TaskLoadedCal
         super.onViewCreated(view, savedInstanceState);
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map1);
         mapFragment.getMapAsync(this);
-        mark1=new MarkerOptions().position(new LatLng(latitudOrigen,longitudorigen)).title(titleorigen);
-        mark2=new MarkerOptions().position(new LatLng(latituddestino,longituddestino)).title(titledestino);
+
         String url=getUrl(mark1.getPosition(),mark2.getPosition(),"driving");
         new FetchURL(getActivity()).execute(url,"driving");
     }
@@ -76,7 +75,8 @@ public class Ruta1 extends Fragment implements OnMapReadyCallback, TaskLoadedCal
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
-
+        mark1=new MarkerOptions().position(new LatLng(latitudOrigen,longitudorigen)).title(titleorigen);
+        mark2=new MarkerOptions().position(new LatLng(latituddestino,longituddestino)).title(titledestino);
         map.addMarker(mark1);
         map.addMarker(mark2);
         /*http://expocodetech.com/el-api-de-rutas-de-google/*/
