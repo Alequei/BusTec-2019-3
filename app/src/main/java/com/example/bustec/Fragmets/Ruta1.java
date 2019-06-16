@@ -46,7 +46,7 @@ public class Ruta1 extends Fragment implements OnMapReadyCallback, TaskLoadedCal
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        id = getArguments().getInt("id"); 
+        id = getArguments().getInt("id");
         latitudOrigen = getArguments().getDouble("latitud-origen");
         longitudorigen = getArguments().getDouble("longitud-origen");
         titleorigen=getArguments().getString("title-origen");

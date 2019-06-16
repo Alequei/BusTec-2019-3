@@ -6,7 +6,7 @@ import retrofit2.http.GET;
 public interface ApiServiceRutas {
     String API_BASE_URL = "https://bustec3.herokuapp.com/api/";
 
-    @GET("rutas/")
-    Call<List<Rutas>> getparutas();
+    @GET("viajes/")
+    Call<List<Rutas>> getviajes();
 
 }

@@ -5,11 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.bustec.Clases.Buses;
-
+import com.example.bustec.Clases.Rutas;
+import com.example.bustec.Interfaces.ApiServiceRutas;
 import com.example.bustec.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,22 +18,28 @@ import java.util.List;
 
 public class AdaptadorBuses extends RecyclerView.Adapter<AdaptadorBuses.ViewHolder>{
 
-private List<Buses> buses;
+private List<Rutas> viajes;
 
 public AdaptadorBuses(){
-        this.buses=new ArrayList<>();
+        this.viajes=new ArrayList<>();
         }
 
-public void setBuses(List<Buses> buses){
-        this.buses=buses;
+public void setBuses(List<Rutas> viajes){
+        this.viajes=viajes;
         }
 
 public class ViewHolder extends RecyclerView.ViewHolder {
     public TextView placaText;
+    public TextView nombreconductorText;
+    public TextView correoconductorText;
+    public ImageView imagenconductorImg;
+
     public ViewHolder(View itemView) {
         super(itemView);
         placaText = itemView.findViewById(R.id.numero_placa);
-
+        nombreconductorText = itemView.findViewById(R.id.nombre_condutor);
+        correoconductorText=itemView.findViewById(R.id.numero_bus);
+        imagenconductorImg=itemView.findViewById(R.id.imagen_carro);
     }
 
 }
@@ -47,13 +54,17 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
-        Buses buses = this.buses.get(position);
-        viewHolder.placaText.setText(buses.getPlaca());
+        Rutas rutas= this.viajes.get(position);
+        viewHolder.placaText.setText(rutas.getBus().getPlaca());
+        viewHolder.nombreconductorText.setText(rutas.getConductor().getNombre());
+        viewHolder.correoconductorText.setText(rutas.getConductor().getCorreo());
+//        String url = ApiServiceRutas.API_BASE_URL + "/viajes/buses/" + viajes();
+//        Picasso.with(viewHolder.itemView.getContext()).load(url).into(viewHolder.imagenconductorImg);
     }
 
     @Override
     public int getItemCount() {
 
-         return this.buses.size();
+         return this.viajes.size();
     }
 }

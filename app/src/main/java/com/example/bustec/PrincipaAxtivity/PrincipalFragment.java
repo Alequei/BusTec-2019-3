@@ -12,10 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.bustec.AdaptadoresApi.AdaptadorBuses;
-import com.example.bustec.Clases.Buses;
-import com.example.bustec.Interfaces.ApiServiceBus;
+
+import com.example.bustec.Clases.Rutas;
+
+import com.example.bustec.Interfaces.ApiServiceRutas;
 import com.example.bustec.R;
-import com.example.bustec.Servidores.ApiServicioBusGenerador;
+import com.example.bustec.Servidores.ApíServicioRutasGenerador;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ import retrofit2.Response;
 public class PrincipalFragment extends Fragment {
 
     private static final String TAG = PrincipalFragment.class.getSimpleName();
-    private RecyclerView busesList;
+    private RecyclerView rutasList;
 
 
     @Override
@@ -34,22 +36,22 @@ public class PrincipalFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_principal, container, false);
-        busesList = view.findViewById(R.id.list_bus);
-        busesList.setLayoutManager(new LinearLayoutManager(getContext()));
-        busesList.setAdapter(new AdaptadorBuses());
+        rutasList = view.findViewById(R.id.list_bus);
+        rutasList.setLayoutManager(new LinearLayoutManager(getContext()));
+        rutasList.setAdapter(new AdaptadorBuses());
         initialize();
         return view;
     }
 
 
     private void initialize() {
-        ApiServiceBus service = ApiServicioBusGenerador.createService(ApiServiceBus.class);
+        ApiServiceRutas service = ApíServicioRutasGenerador.createService(ApiServiceRutas.class);
 
-        Call<List<Buses>> call = service.getbuses();
+        Call<List<Rutas>> call = service.getviajes();
 
-        call.enqueue(new Callback<List<Buses>>() {
+        call.enqueue(new Callback<List<Rutas>>() {
             @Override
-            public void onResponse(Call<List<Buses>> call1 , Response<List<Buses>> response) {
+            public void onResponse(Call<List<Rutas>> call1 , Response<List<Rutas>> response) {
                 try {
 
                     int code = response.code();
@@ -57,11 +59,11 @@ public class PrincipalFragment extends Fragment {
 
                     if (response.isSuccessful()) {
 
-                        List<Buses> buses= response.body();
-                        Log.d(TAG, "buses: " + buses);
+                        List<Rutas> viajes= response.body();
+                        Log.d(TAG, "buses: " + viajes);
 
-                        AdaptadorBuses adapter = (AdaptadorBuses) busesList.getAdapter();
-                        adapter.setBuses(buses);
+                        AdaptadorBuses adapter = (AdaptadorBuses) rutasList.getAdapter();
+                        adapter.setBuses(viajes);
                         adapter.notifyDataSetChanged();
 
                     } else {
@@ -78,7 +80,7 @@ public class PrincipalFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Buses>> call, Throwable t) {
+            public void onFailure(Call<List<Rutas>> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.toString());
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
